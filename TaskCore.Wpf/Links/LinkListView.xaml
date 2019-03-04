@@ -1,0 +1,44 @@
+﻿<UserControl
+    x:Class="TaskCore.Wpf.Links.LinkListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TaskCore.Wpf.Links"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <DataGrid
+        Name="LinksGrid"
+        AutoGenerateColumns="False"
+        CanUserAddRows="False"
+        GridLinesVisibility="None"
+        HorizontalScrollBarVisibility="Disabled"
+        ItemsSource="{Binding Links}"
+        RowHeaderWidth="0">
+        <DataGrid.Columns>
+            <DataGridTextColumn
+                Width="5*"
+                Binding="{Binding Name}"
+                Header="Link"
+                IsReadOnly="True" />
+            <DataGridTextColumn
+                Width="*"
+                Binding="{Binding Created}"
+                Header="Added"
+                IsReadOnly="True" />
+            <DataGridTemplateColumn>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button
+                            Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:LinkListView}}, Path=DataContext.DeleteLinkCommand}"
+                            CommandParameter="{Binding SelectedItem, ElementName=LinksGrid}"
+                            Style="{StaticResource GridButton}">
+                            <Image Source="{StaticResource DeleteImage}" />
+                        </Button>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>

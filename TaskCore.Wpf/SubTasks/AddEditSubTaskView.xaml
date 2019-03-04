@@ -1,0 +1,54 @@
+﻿<UserControl
+    x:Class="TaskCore.Wpf.SubTasks.AddEditSubTaskView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TaskCore.Wpf.SubTasks"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel
+        Width="811"
+        Height="308"
+        Margin="20"
+        FocusManager.FocusedElement="{Binding ElementName=descriptionTextBox}">
+        <StackPanel HorizontalAlignment="Stretch">
+            <TextBlock
+                Padding="0,0,0,20"
+                FontSize="20"
+                Text="Add Sub-Tasks" />
+            <TextBlock
+                Padding="0,0,0,20"
+                FontSize="12"
+                Text="Enter one subtask by line." />
+
+            <TextBox
+                x:Name="descriptionTextBox"
+                Grid.Row="1"
+                Height="100"
+                Padding="10"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Stretch"
+                AcceptsReturn="True"
+                BorderBrush="Gray"
+                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                Text="{Binding SubTaskText, Mode=TwoWay}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel
+            Margin="0,50,0,0"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                Command="{Binding CancelCommand}"
+                IsCancel="True"
+                Style="{StaticResource SecondaryButton}">
+                <TextBlock Text="Cancel" />
+            </Button>
+            <Button Command="{Binding AddSubTaskCommand}" Style="{StaticResource PrimaryButton}">
+                <TextBlock Text="Save" />
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

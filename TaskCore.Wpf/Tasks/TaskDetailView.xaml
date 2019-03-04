@@ -1,0 +1,299 @@
+﻿<UserControl
+    x:Class="TaskCore.Wpf.Tasks.TaskDetailView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:attachments="clr-namespace:TaskCore.Wpf.Attachments"
+    xmlns:comments="clr-namespace:TaskCore.Wpf.Comments"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:links="clr-namespace:TaskCore.Wpf.Links"
+    xmlns:local="clr-namespace:TaskCore.Wpf.Tasks"
+    xmlns:main="clr-namespace:TaskCore.Wpf"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sub="clr-namespace:TaskCore.Wpf.SubTasks"
+    xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <DataTemplate DataType="{x:Type main:PopUpViewModel}">
+            <main:PopUpView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type attachments:AttachmentListViewModel}">
+            <attachments:AttachmentListView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type comments:CommentListViewModel}">
+            <comments:CommentListView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type links:LinkListViewModel}">
+            <links:LinkListView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type sub:SubTaskListViewModel}">
+            <sub:SubTaskListView />
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <DockPanel>
+            <DockPanel
+                Height="50"
+                Background="{StaticResource PrimaryBrush}"
+                DockPanel.Dock="Top">
+                <Button
+                    Width="40"
+                    Padding="10"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}, Path=DataContext.OpenProjectOverview}"
+                    Cursor="Hand"
+                    DockPanel.Dock="Left"
+                    ToolTip="Back">
+                    <StackPanel>
+                        <Image Source="{StaticResource BackImage}" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    Width="40"
+                    Padding="10"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding ExpandAllCommand}"
+                    Cursor="Hand"
+                    DockPanel.Dock="Right"
+                    ToolTip="Expand All">
+                    <Image Source="{StaticResource ExpandAllImage}" />
+                </Button>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    DockPanel.Dock="Left"
+                    Style="{StaticResource TitleText}"
+                    Text="{Binding ProjectTask.Id, StringFormat='# {0}'}" />
+            </DockPanel>
+            <Grid DockPanel.Dock="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel
+                    Grid.Column="0"
+                    Background="White"
+                    Orientation="Vertical">
+                    <TextBlock
+                        Padding="10"
+                        FontSize="14"
+                        FontWeight="SemiBold">
+                        Actions
+                    </TextBlock>
+
+                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+                    <Button Command="{Binding EditTaskCommand}" Style="{StaticResource ActionButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{StaticResource EditImage}" Style="{StaticResource ActionImage}" />
+                            <TextBlock>Edit the task</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+                    <Button Command="{Binding AddAttachmentCommand}" Style="{StaticResource ActionButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{StaticResource AttachmentImage}" Style="{StaticResource ActionImage}" />
+                            <TextBlock>Attach a Document</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+                    <Button Command="{Binding AddCommentCommand}" Style="{StaticResource ActionButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{StaticResource CommentImage}" Style="{StaticResource ActionImage}" />
+                            <TextBlock>Add a Comment</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+                    <Button Command="{Binding AddLinkCommand}" Style="{StaticResource ActionButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{StaticResource LinkImage}" Style="{StaticResource ActionImage}" />
+                            <TextBlock>Add Link</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+                    <Button Command="{Binding AddSubTaskCommand}" Style="{StaticResource ActionButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{StaticResource SubTaskImage}" Style="{StaticResource ActionImage}" />
+                            <TextBlock>Add a sub-task</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+                    <Button Command="{Binding CloseTaskCommand}" Style="{StaticResource ActionButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{StaticResource CloseImage}" Style="{StaticResource ActionImage}" />
+                            <TextBlock>Close this Task</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+                    <Button Command="{Binding DeleteTaskCommand}" Style="{StaticResource ActionButton}">
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                            <Image Source="{StaticResource DeleteImage}" Style="{StaticResource ActionImage}" />
+                            <TextBlock>Delete this Task</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                </StackPanel>
+
+                <GridSplitter
+                    Grid.Column="1"
+                    Width="5"
+                    HorizontalAlignment="Stretch" />
+
+                <ScrollViewer
+                    Grid.Column="2"
+                    Background="Transparent"
+                    VerticalScrollBarVisibility="Auto">
+
+                    <StackPanel Margin="20" Orientation="Vertical">
+
+                        <Border
+                            Padding="10"
+                            Background="White"
+                            BorderBrush="Black"
+                            BorderThickness="1">
+                            <DockPanel Width="Auto">
+                                <Grid DockPanel.Dock="Right">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="4*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Margin="1.581,3,0,3"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Content="Created:" />
+                                    <TextBlock
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding ProjectTask.Created, StringFormat={}{0:d}}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Margin="1.581,3,0,3"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Content="Modified:" />
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding ProjectTask.LastModified, StringFormat={}{0:d}}" />
+                                </Grid>
+                                <TextBlock
+                                    Width="Auto"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center"
+                                    DockPanel.Dock="Left"
+                                    FontSize="20"
+                                    Text="{Binding ProjectTask.Name}" />
+                            </DockPanel>
+                        </Border>
+
+                        <Expander
+                            Name="DescriptionExpander"
+                            ExpandDirection="Down"
+                            IsExpanded="{Binding IsExpanded, Mode=OneWay}">
+                            <Expander.Header>
+                                <TextBlock Style="{StaticResource ExpanderHeader}">Description</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <toolkit:RichTextBox
+                                    x:Name="descriptionTextBox"
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Margin="10"
+                                    Padding="10"
+                                    HorizontalAlignment="Left"
+                                    BorderBrush="Gray"
+                                    IsEnabled="False"
+                                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                    Text="{Binding ProjectTask.Description, Mode=TwoWay}" />
+                            </Expander.Content>
+                        </Expander>
+
+                        <Expander
+                            Name="SubTasksExpander"
+                            ExpandDirection="Down"
+                            IsExpanded="{Binding IsExpanded, Mode=OneWay}"
+                            Visibility="{Binding ProjectTask.SubTasks.Count, Converter={StaticResource IntToVis}}">
+                            <Expander.Header>
+                                <TextBlock Style="{StaticResource ExpanderHeader}">Sub-Tasks</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <ContentControl Content="{Binding SubTaskListViewModel}" />
+                            </Expander.Content>
+                        </Expander>
+
+                        <Expander
+                            Name="AttachmentsExpander"
+                            ExpandDirection="Down"
+                            IsExpanded="{Binding IsExpanded, Mode=OneWay}"
+                            Visibility="{Binding ProjectTask.Attachments.Count, Converter={StaticResource IntToVis}}">
+                            <Expander.Header>
+                                <TextBlock Style="{StaticResource ExpanderHeader}">Attachments</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <ContentControl Content="{Binding AttachmentListViewModel}" />
+                            </Expander.Content>
+                        </Expander>
+
+                        <Expander
+                            Name="LinksExpander"
+                            ExpandDirection="Down"
+                            IsExpanded="{Binding IsExpanded, Mode=OneWay}"
+                            Visibility="{Binding ProjectTask.Links.Count, Converter={StaticResource IntToVis}}">
+                            <Expander.Header>
+                                <TextBlock Style="{StaticResource ExpanderHeader}">Links</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <ContentControl Content="{Binding LinkListViewModel}" />
+                            </Expander.Content>
+                        </Expander>
+
+                        <Expander
+                            Name="CommentsExpander"
+                            ExpandDirection="Down"
+                            IsExpanded="{Binding IsExpanded, Mode=OneWay}"
+                            Visibility="{Binding ProjectTask.Comments.Count, Converter={StaticResource IntToVis}}">
+                            <Expander.Header>
+                                <TextBlock Style="{StaticResource ExpanderHeader}">Comments</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <ContentControl Content="{Binding CommentListViewModel}" />
+                            </Expander.Content>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </DockPanel>
+        <Grid Visibility="{Binding Path=IsPopUpVisible, Converter={StaticResource BoolToVis}}">
+            <ContentControl Content="{Binding PopUpViewModel}" />
+        </Grid>
+    </Grid>
+</UserControl>

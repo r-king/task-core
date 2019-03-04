@@ -1,0 +1,38 @@
+﻿<Window
+    x:Class="TaskCore.Wpf.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="clr-namespace:TaskCore.Domain;assembly=TaskCore.Domain"
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:TaskCore.Wpf"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:projects="clr-namespace:TaskCore.Wpf.Projects"
+    xmlns:tasks="clr-namespace:TaskCore.Wpf.Tasks"
+    Title="Task Core"
+    Width="800"
+    Height="450"
+    Background="{StaticResource BackgroundBrush}"
+    WindowState="Maximized"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <DataTemplate DataType="{x:Type projects:ProjectOverviewViewModel}">
+            <projects:ProjectOverviewView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type tasks:TaskDetailViewModel}">
+            <tasks:TaskDetailView />
+        </DataTemplate>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid>
+            <ContentControl Content="{Binding CurrentViewModel}" />
+        </Grid>
+    </Grid>
+</Window>

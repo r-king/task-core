@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{81D10F31-65C0-4B5D-B1D7-80BBB27BF645}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TaskCore.Wpf</RootNamespace>
+    <AssemblyName>TaskCore.Wpf</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.6\lib\net46\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.6\lib\net46\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Configuration, Version=5.2.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.6\lib\net46\Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.8.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.6\lib\net46\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception, Version=5.5.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.6\lib\net46\Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception.Configuration, Version=5.1.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.6\lib\net46\Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RegistrationByConvention, Version=2.1.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.6\lib\net46\Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ServiceLocation, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.6\lib\net46\Unity.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.4.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.4.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.4.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.4.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.4.0\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.4.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Attachments\AddEditAttachmentView.xaml.cs">
+      <DependentUpon>AddEditAttachmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Attachments\AddEditAttachmentViewModel.cs" />
+    <Compile Include="Attachments\AttachmentListView.xaml.cs">
+      <DependentUpon>AttachmentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Attachments\AttachmentListViewModel.cs" />
+    <Compile Include="BindableBase.cs" />
+    <Compile Include="Comments\AddEditCommentView.xaml.cs">
+      <DependentUpon>AddEditCommentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comments\AddEditCommentViewModel.cs" />
+    <Compile Include="Comments\CommentListView.xaml.cs">
+      <DependentUpon>CommentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comments\CommentListViewModel.cs" />
+    <Compile Include="ContainerHelper.cs" />
+    <Compile Include="ContextAction.cs" />
+    <Compile Include="IntToVisibilityConverter.cs" />
+    <Compile Include="Links\AddEditLinkView.xaml.cs">
+      <DependentUpon>AddEditLinkView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Links\AddEditLinkViewModel.cs" />
+    <Compile Include="Links\LinkListView.xaml.cs">
+      <DependentUpon>LinkListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Links\LinkListViewModel.cs" />
+    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="PopUpView.xaml.cs">
+      <DependentUpon>PopUpView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PopUpViewModel.cs" />
+    <Compile Include="Projects\AddEditProjectView.xaml.cs">
+      <DependentUpon>AddEditProjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Projects\AddEditProjectViewModel.cs" />
+    <Compile Include="Projects\EditableProject.cs" />
+    <Compile Include="Projects\ProjectOverviewView.xaml.cs">
+      <DependentUpon>ProjectOverviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Projects\ProjectOverviewViewModel.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="SubTasks\AddEditSubTaskView.xaml.cs">
+      <DependentUpon>AddEditSubTaskView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubTasks\AddEditSubTaskViewModel.cs" />
+    <Compile Include="SubTasks\SubTaskListView.xaml.cs">
+      <DependentUpon>SubTaskListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubTasks\SubTaskListViewModel.cs" />
+    <Compile Include="Tasks\AddEditTaskView.xaml.cs">
+      <DependentUpon>AddEditTaskView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\AddEditTaskViewModel.cs" />
+    <Compile Include="Tasks\EditableTask.cs" />
+    <Compile Include="Tasks\TaskDetailView.xaml.cs">
+      <DependentUpon>TaskDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\TaskDetailViewModel.cs" />
+    <Compile Include="Tasks\TaskListView.xaml.cs">
+      <DependentUpon>TaskListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\TaskListViewModel.cs" />
+    <Compile Include="ValidatableBindableBase.cs" />
+    <Compile Include="ViewModelLocator.cs" />
+    <Page Include="Attachments\AddEditAttachmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Attachments\AttachmentListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comments\AddEditCommentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comments\CommentListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Links\AddEditLinkView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Links\LinkListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PopUpView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Projects\AddEditProjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Projects\ProjectListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Projects\ProjectOverviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SubTasks\AddEditSubTaskView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SubTasks\SubTaskListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tasks\AddEditTaskView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tasks\TaskDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tasks\TaskListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Projects\ProjectListView.xaml.cs">
+      <DependentUpon>ProjectListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Projects\ProjectListViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\TaskCore.Domain.Attachment.datasource" />
+    <None Include="Properties\DataSources\TaskCore.Domain.Project.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaskCore.Data\TaskCore.Data.csproj">
+      <Project>{e414967a-ea4e-48f5-af10-95cf40e70753}</Project>
+      <Name>TaskCore.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskCore.Domain\TaskCore.Domain.csproj">
+      <Project>{5a6e00ae-493e-4f5a-8a54-9f38ec0ff831}</Project>
+      <Name>TaskCore.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\baseline_close_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\baseline_attach_file_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\baseline_comment_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\baseline_link_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\baseline_assignment_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\baseline_close_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\baseline_arrow_back_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\baseline_edit_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\baseline_delete_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\baseline_clear_all_white_18dp.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

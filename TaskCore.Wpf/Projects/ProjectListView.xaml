@@ -1,0 +1,60 @@
+﻿<UserControl
+    x:Class="TaskCore.Wpf.Projects.ProjectListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="clr-namespace:TaskCore.Domain;assembly=TaskCore.Domain"
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:TaskCore.Wpf.Projects"
+    xmlns:main="clr-namespace:TaskCore.Wpf"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type data:Project}">
+            <TextBlock Text="{Binding Name}" />
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction MethodName="LoadProjects" TargetObject="{Binding}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <StackPanel Grid.Row="0">
+            <DockPanel Background="{StaticResource PrimaryBrush}">
+                <TextBlock Style="{StaticResource TitleText}" Text="Projects" />
+                <Button
+                    HorizontalAlignment="Right"
+                    Command="{Binding AddProjectCommand}"
+                    Style="{StaticResource SecondaryButton}">
+                    <TextBlock Text="Add Project" />
+                </Button>
+            </DockPanel>
+            <ListView
+                BorderThickness="0"
+                IsSynchronizedWithCurrentItem="true"
+                ItemsSource="{Binding Projects}"
+                SelectedItem="{Binding DataContext.TaskListViewModel.SelectedProject, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:ProjectOverviewView}}}">
+                <ListView.ContextMenu>
+                    <ContextMenu ItemsSource="{Binding ProjectActions}">
+                        <ContextMenu.ItemTemplate>
+                            <DataTemplate DataType="MenuItem">
+                                <MenuItem
+                                    Command="{Binding Action}"
+                                    CommandParameter="{Binding DataContext.TaskListViewModel.SelectedProject, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:ProjectOverviewView}}}"
+                                    Header="{Binding Name}" />
+                            </DataTemplate>
+                        </ContextMenu.ItemTemplate>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+            </ListView>
+
+        </StackPanel>
+    </Grid>
+</UserControl>
